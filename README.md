@@ -44,9 +44,9 @@ d
 g
 ```
 
-step 1. before we find the start pattern, we simplly output everything that we read from stream.
-step 2. after we find the start pattern, we are in a match range. all the inputs should be buffered until the stop pattern is founded. 
-step 3. actually processing
+ - step 1. before we find the start pattern, we simplly output everything that we read from stream.
+ - step 2. after we find the start pattern, we are in a match range. all the inputs should be buffered until the stop pattern is founded. 
+ - step 3. actually processing
 
 Using this tool, you can achieve this just like the following:
 ```Bash
@@ -66,6 +66,8 @@ a<p>bc</p>d<p>ef</p>g
 ```
 
 you can even omit 1, $. when no address pattern is defined. this tool will take the first and  the last line as the range pattern.
+
+
 ```Bash
 $ echo -e "a\n<p>\nb\nc\n</p>\nd\n<p>\ne\nf\n</p>\ng" | ./sed -s 's/\n//g'
 a<p>bc</p>d<p>ef</p>g
