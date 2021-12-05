@@ -2,6 +2,12 @@ A sed interpreter written in Golang.
 
 Most behaviors of this program is implemented follow GNU-sed, except all those operations related to external files are kepted unfinished. 
 
+the grammar is even more loosen compare to the GNU one: the ; follow evey commands is not required. so we can write commands in this style:
+```Bash
+$ echo -e 'a\nb\nc' | ./sed -n 'hgNhnxGs/\n//g;s/abc/ABC/p'
+ABC
+```
+
 Only two command line parameters are supplied.
 ```Bash
 $ ./sed -h
