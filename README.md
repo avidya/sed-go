@@ -80,4 +80,6 @@ $ echo -e "a\n<p>\nb\nc\n</p>\nd\n<p>\ne\nf\n</p>\ng" | ./sed -s 's/\n//g'
 a<p>bc</p>d<p>ef</p>g
 ```
 
-Enjoy! any feedback: benimaur@gmail.com
+hope the tool will be helpful, or give someone enlightenment. 
+
+any feedback: benimaur@gmail.com
