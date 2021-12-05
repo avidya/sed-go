@@ -59,6 +59,7 @@ g
 ```
 
 the stream mode is also applied to line pattern, and relative range pattern as well
+
 remove all the `\n':
 ```Bash
 $ echo -e "a\n<p>\nb\nc\n</p>\nd\n<p>\ne\nf\n</p>\ng" | ./sed -s '1,$s/\n//g'
