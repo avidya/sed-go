@@ -39,7 +39,7 @@ f
 g
 ```
 
-although there's multiple ways to achieve that, but I believe the solution listed below shows us an idea how a typical stream oriented processing way is like. 
+although there's multiple ways to achieve that, but I believe the solution listed below gives us some clue how a typical stream oriented processing way is like. 
 
 ```Bash
 $ echo -e "a\n<p>\nb\nc\n</p>\nd\n<p>\ne\nf\n</p>\ng" | sed '/<p>/!b;:x N;/<\/p>/!bx;s/\n//g;'
