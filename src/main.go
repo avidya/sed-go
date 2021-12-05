@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	inhibitPrint := flag.Bool("n", false, "inhibit print")
+	inhibitPrint := flag.Bool("n", false, "inhibit printing")
 	streamMod := flag.Bool("s", false, "work in pseudo-stream mode")
 	flag.Parse()
 	expression := flag.Args()
