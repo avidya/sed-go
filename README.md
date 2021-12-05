@@ -10,13 +10,13 @@ Usage of ./sed:
   -s	work in pseudo-stream mode
 ```
 
-`-r' is not necessary since ERE is enabled as default, and there's no way to switch it off. As the standard Golang libs use RE2 as the underlying regular exression support, there may exists some subtle differences between these two standards. 
+`-r` is not necessary since ERE is enabled as default, and there's no way to switch it off. As the standard Golang libs use RE2 as the underlying regular exression support, there may exists some subtle differences between these two standards. 
 
-`-s' can be regarded as an extension upon the original version. 
+`-s` can be regarded as an extension upon the original version. 
 
 basically spreaking, a sed implementation follows the POSIX standard is a line based editing tool. Yes, no matter what the name it is from. It's line based, not stream oriented! one will get into trouble when facing problem to process spanning lines, and that's why N, n, b, t these commands come into play.
 
-think about this problem, if we want to remove all the newline feeds between a <p>, </p> pair. How to do that? 
+think about this problem, if we want to remove all the newline feeds between a `<p>`, `</p>` pair. How to do that? 
 
 ```Bash
 $ echo -e "a\n<p>\nb\nc\n</p>\nd\n<p>\ne\nf\n</p>\ng"
