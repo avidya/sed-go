@@ -2,7 +2,7 @@ A sed interpreter written in Golang.
 
 Most behaviors of this program is implemented follow GNU-sed, except all those operations related to external files are kepted unfinished. 
 
-the grammar is even more loosen compare to the GNU one: the semicolon `;` after each commands is not required(except for `s`). so we can write commands in this style:
+the [grammar](https://github.com/avidya/sed-go/blob/main/sed.g) is even more loosen compare to the GNU one: the semicolon `;` after each commands is not required(except for `s`). so we can write commands in this style:
 ```Bash
 $ echo -e 'a\nb\nc' | ./sed -n 'hgNhnxGs/\n//g;s/abc/ABC/p'
 ABC
