@@ -16,7 +16,7 @@ Usage of ./sed:
 
 basically spreaking, a sed implementation follows the POSIX standard is a line based editing tool. Yes, no matter what the name it is from. It's line based, not stream oriented! one will get into trouble when facing problem to process spanning lines, and that's why N, n, b, t these commands come into play.
 
-think about this problem, if we want to remove all the newline feeds between a `<p>', `</p>' pair. How to do that? 
+think about this problem, if we want to remove all the newline feeds between a <p>, </p> pair. How to do that? 
 
 ```Bash
 $ echo -e "a\n<p>\nb\nc\n</p>\nd\n<p>\ne\nf\n</p>\ng"
