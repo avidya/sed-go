@@ -15,7 +15,7 @@ func TestFunc(t *testing.T) {
 	ec := &parser.ExecutionContext{
 		CurrentAST:   ctx.AST,
 		InhibitPrint: false,
-		Debug: true,
+		Debug:        true,
 	}
 	interpreter.Eval(ec, *bufio.NewScanner(strings.NewReader("a\nb\nc")))
 	(assert.New(t)).True(AssertContent("a\nb\nABC\nABC"))
@@ -26,7 +26,7 @@ func TestDeleteToNewline(t *testing.T) {
 	ec := &parser.ExecutionContext{
 		CurrentAST:   ctx.AST,
 		InhibitPrint: false,
-		Debug: true,
+		Debug:        true,
 	}
 	interpreter.Eval(ec, *bufio.NewScanner(strings.NewReader("a\nb\nc")))
 	(assert.New(t)).True(AssertContent("a\\nb\\nc$\nb\nc"))
@@ -37,8 +37,19 @@ func TestDelete(t *testing.T) {
 	ec := &parser.ExecutionContext{
 		CurrentAST:   ctx.AST,
 		InhibitPrint: false,
-		Debug: true,
+		Debug:        true,
 	}
 	interpreter.Eval(ec, *bufio.NewScanner(strings.NewReader("a\nb\nc\nd")))
 	(assert.New(t)).True(AssertContent("a\\nb\\nc$\nd"))
+}
+
+func TestLineDelete(t *testing.T) {
+	ctx := parser.ParseExpression("3d", false)
+
+	ec := &parser.ExecutionContext{
+		CurrentAST: ctx.AST,
+		Debug: true,
+	}
+	interpreter.Eval(ec, *bufio.NewScanner(strings.NewReader("a\n<p>\nb\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh")))
+	(assert.New(t)).True(AssertContent("a\n<p>\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh"))
 }
