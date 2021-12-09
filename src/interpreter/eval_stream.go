@@ -23,7 +23,7 @@ func EvalStream(ec *p.ExecutionContext, scanner bufio.Scanner) {
 				for _, function := range stat.Functions {
 					function.Call(ec, &scanner)
 				}
-				if !ec.InhibitPrint {
+				if !ec.InhibitPrint && !ec.InRange {
 					p.PrintContent(ec.PatternSpace+"\n", ec)
 				}
 				ec.PatternSpace = ec.HoldSpace
@@ -39,7 +39,7 @@ func matchStream(ec *p.ExecutionContext, addresses []p.AddrPattern) bool {
 	switch len(addresses) {
 	case 0:
 		ec.InRange = true
-		return ec.InRange && ec.HitEnd
+		return ec.CurrentLineNum == 1 || ec.HitEnd
 	case 1:
 		panic("single address does not work in stream mode")
 	case 2:
