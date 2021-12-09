@@ -66,11 +66,9 @@ func (b *Jump) Call(ec *ExecutionContext, _ *bufio.Scanner) int {
 	} else {
 		var ast ASTNode
 		for ast = BeginLabel; ast != EndLabel; ast = ast.Next() {
-			if label, ok := ast.(*Label); ok {
-				if label.Name == b.Name {
-					ec.CurrentAST = ast
-					return Continue
-				}
+			if label, ok := ast.(*Label); ok && label.Name == b.Name {
+				ec.CurrentAST = ast
+				return Continue
 			}
 		}
 		panic(fmt.Sprintf("can't find label for jump to `%s'", b.Name))
