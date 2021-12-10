@@ -121,9 +121,8 @@ type Substitute struct {
 
 func (s *Substitute) Call(ec *ExecutionContext, _ *bufio.Scanner) int {
 	result := s.Pattern.FindAllStringSubmatchIndex(ec.PatternSpace, -1)
-	if len(result) == 0 {
-		ec.LastSubResult = false
-	} else {
+	ec.LastSubResult = false
+	if len(result) > 0 {
 		psBytes := []byte(ec.PatternSpace)
 		psBuf := bytes.NewBuffer([]byte{})
 		lastIndex := 0
