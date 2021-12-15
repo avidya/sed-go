@@ -2,9 +2,9 @@ package tests
 
 import (
 	"bufio"
+	"github.com/avidya/sed-go/interpreter"
+	"github.com/avidya/sed-go/parser"
 	"github.com/stretchr/testify/assert"
-	"sed/interpreter"
-	"sed/parser"
 	"strings"
 	"testing"
 )
@@ -20,7 +20,7 @@ func TestRunning_1(t *testing.T) {
 
 	ec := &parser.ExecutionContext{
 		CurrentAST: ctx.AST,
-		Debug: true,
+		Debug:      true,
 	}
 	interpreter.Eval(ec, *bufio.NewScanner(strings.NewReader("a\n<p>\nb\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh")))
 	assert.True(AssertContent("a\n<p>bc</p>\ne\n<p>fg</p>\nh"))
@@ -33,7 +33,7 @@ func TestRunning_2_1(t *testing.T) {
 	ec := &parser.ExecutionContext{
 		CurrentAST:   ctx.AST,
 		InhibitPrint: true,
-		Debug: true,
+		Debug:        true,
 	}
 	interpreter.Eval(ec, *bufio.NewScanner(strings.NewReader("a\n<p>\nb\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh")))
 	(assert.New(t)).True(AssertContent("a$\na\n<p>\\nb$\n<p>\\nb\\nc$\n<p>\\nb\\nc\\n</p>$\n<p>bc</p>\ne\n<p>\\nf$\n<p>\\nf\\ng$\n<p>\\nf\\ng\\n</p>$\n<p>fg</p>\nh"))
@@ -45,7 +45,7 @@ func TestRunning_2_2(t *testing.T) {
 	ec := &parser.ExecutionContext{
 		CurrentAST:   ctx.AST,
 		InhibitPrint: true,
-		Debug: true,
+		Debug:        true,
 	}
 	interpreter.Eval(ec, *bufio.NewScanner(strings.NewReader("a\n<p>\nb\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh")))
 	(assert.New(t)).True(AssertContent("a$\na\n<p>\\nb$\n<p>\\nb\\nc$\n<p>\\nb\\nc\\n</p>$\n<p>bc</p>\ne\n<p>\\nf$\n<p>\\nf\\ng$\n<p>\\nf\\ng\\n</p>$\n<p>fg</p>\nh"))
@@ -56,7 +56,7 @@ func TestRunning_3(t *testing.T) {
 
 	ec := &parser.ExecutionContext{
 		CurrentAST: ctx.AST,
-		Debug: true,
+		Debug:      true,
 	}
 	interpreter.Eval(ec, *bufio.NewScanner(strings.NewReader("a\n<p>\nb\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh")))
 	(assert.New(t)).True(AssertContent("a\n<p>bc</p>\ne\n<p>fg</p>\nh"))
@@ -68,7 +68,7 @@ func TestG(t *testing.T) {
 	ec := &parser.ExecutionContext{
 		CurrentAST:   ctx.AST,
 		InhibitPrint: false,
-		Debug: true,
+		Debug:        true,
 	}
 	interpreter.Eval(ec, *bufio.NewScanner(strings.NewReader("And he said \"This too\n   shall pass\" end")))
 	(assert.New(t)).True(AssertContent("And he said \n\"This too shall pass\"\n end"))
@@ -80,7 +80,7 @@ func TestG2(t *testing.T) {
 	ec := &parser.ExecutionContext{
 		CurrentAST:   ctx.AST,
 		InhibitPrint: false,
-		Debug: true,
+		Debug:        true,
 	}
 	interpreter.Eval(ec, *bufio.NewScanner(strings.NewReader("And he said \"This too\n   shall pass\" end")))
 	(assert.New(t)).True(AssertContent("And he said \"This too   shall pass\" end"))

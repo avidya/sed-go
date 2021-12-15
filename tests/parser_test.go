@@ -1,8 +1,8 @@
 package tests
 
 import (
+	"github.com/avidya/sed-go/parser"
 	"github.com/stretchr/testify/assert"
-	"sed/parser"
 	"testing"
 )
 

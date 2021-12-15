@@ -2,9 +2,9 @@ package tests
 
 import (
 	"bufio"
+	"github.com/avidya/sed-go/interpreter"
+	"github.com/avidya/sed-go/parser"
 	"github.com/stretchr/testify/assert"
-	"sed/interpreter"
-	"sed/parser"
 	"strings"
 	"testing"
 )

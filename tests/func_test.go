@@ -2,9 +2,9 @@ package tests
 
 import (
 	"bufio"
+	"github.com/avidya/sed-go/interpreter"
+	"github.com/avidya/sed-go/parser"
 	"github.com/stretchr/testify/assert"
-	"sed/interpreter"
-	"sed/parser"
 	"strings"
 	"testing"
 )
@@ -48,7 +48,7 @@ func TestLineDelete_1(t *testing.T) {
 
 	ec := &parser.ExecutionContext{
 		CurrentAST: ctx.AST,
-		Debug: true,
+		Debug:      true,
 	}
 	interpreter.Eval(ec, *bufio.NewScanner(strings.NewReader("a\n<p>\nb\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh")))
 	(assert.New(t)).True(AssertContent("a\n<p>\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh"))
@@ -59,7 +59,7 @@ func TestLineDelete_2(t *testing.T) {
 
 	ec := &parser.ExecutionContext{
 		CurrentAST: ctx.AST,
-		Debug: true,
+		Debug:      true,
 	}
 	interpreter.Eval(ec, *bufio.NewScanner(strings.NewReader("a\n<p>\nb\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh")))
 	(assert.New(t)).True(AssertContent("a\n<p>"))

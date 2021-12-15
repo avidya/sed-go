@@ -2,7 +2,7 @@ package interpreter
 
 import (
 	"bufio"
-	p "sed/parser"
+	p "github.com/avidya/sed-go/parser"
 )
 
 func EvalStream(ec *p.ExecutionContext, scanner bufio.Scanner) {

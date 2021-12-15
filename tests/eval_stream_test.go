@@ -2,9 +2,9 @@ package tests
 
 import (
 	"bufio"
+	"github.com/avidya/sed-go/interpreter"
+	"github.com/avidya/sed-go/parser"
 	"github.com/stretchr/testify/assert"
-	"sed/interpreter"
-	"sed/parser"
 	"strings"
 	"testing"
 )
@@ -15,8 +15,8 @@ func TestStreamMod(t *testing.T) {
 	ec := &parser.ExecutionContext{
 		CurrentAST:   ctx.AST,
 		InhibitPrint: false,
-		StreamMode: true,
-		Debug: true,
+		StreamMode:   true,
+		Debug:        true,
 	}
 	interpreter.EvalStream(ec, *bufio.NewScanner(strings.NewReader("a\n<p>\nb\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh")))
 	(assert.New(t)).True(AssertContent("a\n<p>bc</p>\ne\n<p>fg</p>\nh"))
@@ -27,9 +27,9 @@ func TestStreamMod2_1(t *testing.T) {
 
 	ec := &parser.ExecutionContext{
 		CurrentAST:   ctx.AST,
-		StreamMode: true,
+		StreamMode:   true,
 		InhibitPrint: false,
-		Debug: true,
+		Debug:        true,
 	}
 	interpreter.EvalStream(ec, *bufio.NewScanner(strings.NewReader("a\n<p>\nb\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh")))
 	(assert.New(t)).True(AssertContent("a<p>bc</p>e<p>fg</p>h"))
@@ -40,9 +40,9 @@ func TestStreamMod2_2(t *testing.T) {
 
 	ec := &parser.ExecutionContext{
 		CurrentAST:   ctx.AST,
-		StreamMode: true,
+		StreamMode:   true,
 		InhibitPrint: false,
-		Debug: true,
+		Debug:        true,
 	}
 	interpreter.EvalStream(ec, *bufio.NewScanner(strings.NewReader("a\n<p>\nb\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh")))
 	(assert.New(t)).True(AssertContent("a<p>bc</p>e<p>fg</p>h"))
@@ -53,9 +53,9 @@ func TestStreamMod3(t *testing.T) {
 
 	ec := &parser.ExecutionContext{
 		CurrentAST:   ctx.AST,
-		StreamMode: true,
+		StreamMode:   true,
 		InhibitPrint: false,
-		Debug: true,
+		Debug:        true,
 	}
 	interpreter.EvalStream(ec, *bufio.NewScanner(strings.NewReader("a\n<p>\nb\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh")))
 	(assert.New(t)).True(AssertContent("a\n<p>bc</p>e<p>f\ng\n</p>\nh"))
@@ -66,11 +66,10 @@ func TestStreamMod4(t *testing.T) {
 
 	ec := &parser.ExecutionContext{
 		CurrentAST:   ctx.AST,
-		StreamMode: true,
+		StreamMode:   true,
 		InhibitPrint: false,
-		Debug: true,
+		Debug:        true,
 	}
 	interpreter.EvalStream(ec, *bufio.NewScanner(strings.NewReader("a\n<p>\nb\nc\n</p>\ne\n<p>\nf\ng\n</p>\nh")))
 	(assert.New(t)).True(AssertContent("a\n<p>bc</p>e<p>f\ng\n</p>\nh"))
 }
-
