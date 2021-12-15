@@ -117,12 +117,10 @@ var EndLabel = &Label{Name: "END"}
 
 func ParseExpression(source string, streamMod bool) *AnalysisContext {
 	ctx := &AnalysisContext{
-		[]rune(source),
-		-1,
-		0,
-		BeginLabel,
-		"",
-		streamMod,
+		Source:    []rune(source),
+		position:  -1,
+		AST:       BeginLabel,
+		StreamMod: streamMod,
 	}
 	ctx.statements()
 	ctx.AST.SetNext(EndLabel)
