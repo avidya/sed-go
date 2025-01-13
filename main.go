@@ -4,8 +4,9 @@ import (
 	"bufio"
 	"flag"
 	"os"
-	"sed/interpreter"
-	"sed/parser"
+
+	"github.com/avidya/sed-go/interpreter"
+	"github.com/avidya/sed-go/parser"
 )
 
 func main() {
